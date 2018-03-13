@@ -156,6 +156,7 @@ architecture rtl of top is
   signal dir_blue            : std_logic_vector(7 downto 0);
   signal dir_pixel_column    : std_logic_vector(10 downto 0);
   signal dir_pixel_row       : std_logic_vector(10 downto 0);
+  signal counterName			  : std_logic_vector (3 downto 0);
 
 begin
 
@@ -168,14 +169,15 @@ begin
   graphics_lenght <= conv_std_logic_vector(MEM_SIZE*8*8, GRAPH_MEM_ADDR_WIDTH);
   
   -- removed to inputs pin
-  direct_mode <= '1';
-  display_mode     <= "10";  -- 01 - text mode, 10 - graphics mode, 11 - text & graphics
+  direct_mode <= '0';
+  display_mode     <= "01";  -- 01 - text mode, 10 - graphics mode, 11 - text & graphics
   
   font_size        <= x"1";
-  show_frame       <= '1';
+  show_frame       <= '0';
   foreground_color <= x"FFFFFF";
   background_color <= x"000000";
   frame_color      <= x"FF0000";
+  
 
   clk5m_inst : ODDR2
   generic map(
@@ -250,11 +252,82 @@ begin
   --dir_red
   --dir_green
   --dir_blue
+  
+  
+  
+  	dir_red<="11111111" when dir_pixel_column>="00000000000" and dir_pixel_column<="00001010000" else
+				"11110000" when dir_pixel_column>="00001010000" and dir_pixel_column<="00010100000" else
+				"11100000" when dir_pixel_column>="00010100000" and dir_pixel_column<="00011110000" else
+				"11000000" when dir_pixel_column>="00011110000" and dir_pixel_column<="00101000000" else
+				"10000000" when dir_pixel_column>="00101000000" and dir_pixel_column<="00110010000" else
+				"00000001" when dir_pixel_column>="00110010000" and dir_pixel_column<="00111100000" else
+				"00000111" when dir_pixel_column>="00111100000" and dir_pixel_column<="01000110000" else
+				"00001111" when dir_pixel_column>="01000110000" and dir_pixel_column<="01010000000" else
+				"00000000";
+				
+				
+	dir_green<="00000000" when dir_pixel_column>="00000000000" and dir_pixel_column<="00001010000" else
+				"00001111" when dir_pixel_column>="00001010000" and dir_pixel_column<="00010100000" else
+				"11100000" when dir_pixel_column>="00010100000" and dir_pixel_column<="00011110000" else
+				"11000000" when dir_pixel_column>="00011110000" and dir_pixel_column<="00101000000" else
+				"10000010" when dir_pixel_column>="00101000000" and dir_pixel_column<="00110010000" else
+				"00001001" when dir_pixel_column>="00110010000" and dir_pixel_column<="00111100000" else
+				"00110111" when dir_pixel_column>="00111100000" and dir_pixel_column<="01000110000" else
+				"00001111" when dir_pixel_column>="01000110000" and dir_pixel_column<="01010000000" else
+				"11111111";
+				
+																																														
+ 	dir_blue<="00001111" when dir_pixel_column>="00000000000" and dir_pixel_column<="00001010000" else
+				"00000000" when dir_pixel_column>="00001010000" and dir_pixel_column<="00010100000" else
+				"11000000" when dir_pixel_column>="00010100000" and dir_pixel_column<="00011110000" else
+				"10000000" when dir_pixel_column>="00011110000" and dir_pixel_column<="00101000000" else
+				"11000000" when dir_pixel_column>="00101000000" and dir_pixel_column<="00110010000" else
+				"11000001" when dir_pixel_column>="00110010000" and dir_pixel_column<="00111100000" else
+				"11100111" when dir_pixel_column>="00111100000" and dir_pixel_column<="01000110000" else
+				"00001111" when dir_pixel_column>="01000110000" and dir_pixel_column<="01010000000" else
+				"11111111";
+	
+  
+  
  
   -- koristeci signale realizovati logiku koja pise po TXT_MEM
   --char_address
   --char_value
   --char_we
+  
+  char_we<='1';
+
+  
+process(pix_clock_s, reset_n_i) begin
+	if(reset_n_i='0') then
+		char_address<="00000000000000";
+	elsif (pix_clock_s'event and pix_clock_s='1') then
+		if (char_address=4800) then
+				char_address<="00000000000000";
+			else
+				char_address<=char_address+1;
+	   end if;
+	end if;
+end process;
+  
+  char_value<="001101" when char_address=1 else
+				  "001001" when char_address=2 else
+				  "001100" when char_address=3 else
+				  "001001" when char_address=4 else
+				  "000011" when char_address=5 else
+				  "000001" when char_address=6 else
+				  "011010" when char_address=7 else
+				  "010000" when char_address=8 else
+				  "001111" when char_address=9 else
+				  "001110" when char_address=10 else
+				  "001111" when char_address=11 else
+				  "010011" when char_address=12 else
+				  "011010";
+   
+  
+  
+  
+  
   
   -- koristeci signale realizovati logiku koja pise po GRAPH_MEM
   --pixel_address
