@@ -14,6 +14,9 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
+
+
+
 entity top is
   generic (
     RES_TYPE             : natural := 1;
@@ -51,6 +54,21 @@ architecture rtl of top is
   constant V_RES          : natural := V_RES_ARRAY(RES_TYPE);
   constant MEM_ADDR_WIDTH : natural := MEM_ADDR_WIDTH_ARRAY(RES_TYPE);
   constant MEM_SIZE       : natural := MEM_SIZE_ARRAY(RES_TYPE);
+  
+  
+  component clk_counter is generic(
+                              -- maksimalna vrednost broja do kojeg brojac broji
+                              max_cnt : STD_LOGIC_VECTOR(25 DOWNTO 0) := "10111110101111000010000000" -- 50 000 000
+                             );
+                      port   (
+                               clk_i     : IN  STD_LOGIC; -- ulazni takt
+                               rst_i     : IN  STD_LOGIC; -- reset signal
+                               cnt_en_i  : IN  STD_LOGIC; -- signal dozvole brojanja
+                               cnt_rst_i : IN  STD_LOGIC; -- signal resetovanja brojaca (clear signal)
+                               one_sec_o : OUT STD_LOGIC  -- izlaz koji predstavlja proteklu jednu sekundu vremena
+                             );
+end component;
+  
 
   component vga_top is 
     generic (
@@ -156,7 +174,7 @@ architecture rtl of top is
   signal dir_blue            : std_logic_vector(7 downto 0);
   signal dir_pixel_column    : std_logic_vector(10 downto 0);
   signal dir_pixel_row       : std_logic_vector(10 downto 0);
-  signal counterName			  : std_logic_vector (3 downto 0);
+  signal counter_sec			  : std_logic_vector (6 downto 0);
 
 begin
 
@@ -309,20 +327,22 @@ process(pix_clock_s, reset_n_i) begin
 	   end if;
 	end if;
 end process;
+
+
   
-  char_value<="001101" when char_address=1 else
+char_value<="001101" when char_address=1 else
 				  "001001" when char_address=2 else
 				  "001100" when char_address=3 else
 				  "001001" when char_address=4 else
 				  "000011" when char_address=5 else
 				  "000001" when char_address=6 else
-				  "011010" when char_address=7 else
+				  "100000" when char_address=7 else
 				  "010000" when char_address=8 else
 				  "001111" when char_address=9 else
 				  "001110" when char_address=10 else
 				  "001111" when char_address=11 else
 				  "010011" when char_address=12 else
-				  "011010";
+				  "100000"; 
    
   
   

@@ -3,13 +3,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: top.prj
@@ -150,9 +150,9 @@ Parsing architecture <rtl> of entity <top>.
 =========================================================================
 
 Elaborating entity <top> (architecture <rtl>) with generics from library <work>.
-WARNING:HDLCompiler:1127 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 164: Assignment to message_lenght ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 169: Assignment to graphics_lenght ignored, since the identifier is never used
-WARNING:HDLCompiler:89 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 106: <oddr2> remains a black-box since it has no binding entity.
+WARNING:HDLCompiler:1127 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 182: Assignment to message_lenght ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 187: Assignment to graphics_lenght ignored, since the identifier is never used
+WARNING:HDLCompiler:89 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 124: <oddr2> remains a black-box since it has no binding entity.
 
 Elaborating entity <vga_top> (architecture <rtl>) with generics from library <work>.
 
@@ -172,9 +172,9 @@ Elaborating entity <text_mem> (architecture <arc_text_mem>) with generics from l
 
 Elaborating entity <graphics_mem> (architecture <arc_graphics_mem>) with generics from library <work>.
 WARNING:HDLCompiler:1127 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\vga_top.vhd" Line 301: Assignment to grid_size ignored, since the identifier is never used
-WARNING:HDLCompiler:634 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 146: Net <pixel_address[19]> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 147: Net <pixel_value[31]> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 148: Net <pixel_we> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 164: Net <pixel_address[19]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 165: Net <pixel_value[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" Line 166: Net <pixel_we> does not have a driver.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -185,29 +185,29 @@ Synthesizing Unit <top>.
         RES_TYPE = 1
         TEXT_MEM_DATA_WIDTH = 6
         GRAPH_MEM_DATA_WIDTH = 32
-INFO:Xst:3210 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" line 201: Output port <dir_pixel_row_o> of the instance <vga_top_i> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" line 201: Output port <vga_rst_n_o> of the instance <vga_top_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" line 219: Output port <dir_pixel_row_o> of the instance <vga_top_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\mp RA118-2015\lab2\source\rtl\vhdl\top.vhd" line 219: Output port <vga_rst_n_o> of the instance <vga_top_i> is unconnected or connected to loadless signal.
 WARNING:Xst:653 - Signal <pixel_address> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <pixel_value> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <pixel_we> is used but never assigned. This sourceless signal will be automatically connected to value GND.
     Found 14-bit register for signal <char_address>.
-    Found 14-bit adder for signal <char_address[13]_GND_5_o_add_82_OUT> created at line 308.
+    Found 14-bit adder for signal <char_address[13]_GND_5_o_add_82_OUT> created at line 326.
     Found 16x6-bit Read Only RAM for signal <_n0199>
-    Found 11-bit comparator lessequal for signal <n0007> created at line 258
-    Found 11-bit comparator lessequal for signal <n0009> created at line 259
-    Found 11-bit comparator lessequal for signal <n0011> created at line 259
-    Found 11-bit comparator lessequal for signal <n0014> created at line 260
-    Found 11-bit comparator lessequal for signal <n0016> created at line 260
-    Found 11-bit comparator lessequal for signal <n0019> created at line 261
-    Found 11-bit comparator lessequal for signal <n0021> created at line 261
-    Found 11-bit comparator lessequal for signal <n0024> created at line 262
-    Found 11-bit comparator lessequal for signal <n0026> created at line 262
-    Found 11-bit comparator lessequal for signal <n0029> created at line 263
-    Found 11-bit comparator lessequal for signal <n0031> created at line 263
-    Found 11-bit comparator lessequal for signal <n0034> created at line 264
-    Found 11-bit comparator lessequal for signal <n0036> created at line 264
-    Found 11-bit comparator lessequal for signal <n0039> created at line 265
-    Found 11-bit comparator lessequal for signal <n0041> created at line 265
+    Found 11-bit comparator lessequal for signal <n0007> created at line 276
+    Found 11-bit comparator lessequal for signal <n0009> created at line 277
+    Found 11-bit comparator lessequal for signal <n0011> created at line 277
+    Found 11-bit comparator lessequal for signal <n0014> created at line 278
+    Found 11-bit comparator lessequal for signal <n0016> created at line 278
+    Found 11-bit comparator lessequal for signal <n0019> created at line 279
+    Found 11-bit comparator lessequal for signal <n0021> created at line 279
+    Found 11-bit comparator lessequal for signal <n0024> created at line 280
+    Found 11-bit comparator lessequal for signal <n0026> created at line 280
+    Found 11-bit comparator lessequal for signal <n0029> created at line 281
+    Found 11-bit comparator lessequal for signal <n0031> created at line 281
+    Found 11-bit comparator lessequal for signal <n0034> created at line 282
+    Found 11-bit comparator lessequal for signal <n0036> created at line 282
+    Found 11-bit comparator lessequal for signal <n0039> created at line 283
+    Found 11-bit comparator lessequal for signal <n0041> created at line 283
     Summary:
 	inferred   1 RAM(s).
 	inferred   1 Adder/Subtractor(s).
@@ -530,13 +530,13 @@ Top Level Output File Name         : top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 161
+# BELS                             : 162
 #      GND                         : 2
 #      INV                         : 6
 #      LUT1                        : 31
 #      LUT2                        : 1
 #      LUT3                        : 8
-#      LUT5                        : 23
+#      LUT5                        : 24
 #      LUT6                        : 22
 #      MUXCY                       : 31
 #      MUXF7                       : 1
@@ -572,16 +572,16 @@ Selected Device : 6slx45fgg676-2
 
 Slice Logic Utilization: 
  Number of Slice Registers:              49  out of  54576     0%  
- Number of Slice LUTs:                   92  out of  27288     0%  
-    Number used as Logic:                91  out of  27288     0%  
+ Number of Slice LUTs:                   93  out of  27288     0%  
+    Number used as Logic:                92  out of  27288     0%  
     Number used as Memory:                1  out of   6408     0%  
        Number used as SRL:                1
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    104
-   Number with an unused Flip Flop:      55  out of    104    52%  
-   Number with an unused LUT:            12  out of    104    11%  
-   Number of fully used LUT-FF pairs:    37  out of    104    35%  
+ Number of LUT Flip Flop pairs used:    105
+   Number with an unused Flip Flop:      56  out of    105    53%  
+   Number with an unused LUT:            12  out of    105    11%  
+   Number of fully used LUT-FF pairs:    37  out of    105    35%  
    Number of unique control sets:         6
 
 IO Utilization: 
@@ -638,7 +638,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_i'
   Clock period: 9.422ns (frequency: 106.132MHz)
-  Total number of paths / destination ports: 3132 / 188
+  Total number of paths / destination ports: 3146 / 189
 -------------------------------------------------------------------------
 Delay:               10.176ns (Levels of Logic = 3)
   Source:            vga_top_i/vga_i/vga_sync_i/v_count_r_9 (FF)
@@ -714,12 +714,12 @@ clk_i          |   10.176|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.46 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.40 secs
  
 --> 
 
-Total memory usage is 281580 kilobytes
+Total memory usage is 281168 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   19 (   0 filtered)
